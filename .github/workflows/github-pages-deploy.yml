@@ -1,0 +1,39 @@
+name: Build and Deploy
+
+on:
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: 'Branch to build from'
+        required: true
+        default: 'prod'
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Clear deploy branch
+        run: |
+          git checkout deploy
+          git rm -r .
+
+      - name: Build project
+        run: |
+          # Replace this with your build command
+          npm install
+          npm run build
+
+      - name: Move build output to deploy branch
+        run: |
+          mkdir deploy
+          mv <build-output-folder>/* deploy/
+
+      - name: Commit changes
+        run: |
+          git add -A
+          git commit -m "Update deploy branch"
+          git push origin deploy
