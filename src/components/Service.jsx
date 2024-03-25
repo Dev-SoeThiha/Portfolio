@@ -3,7 +3,7 @@ import services from './../data/data'
 
 const Service = () => {
   return (
-    <div className='px-10 max-w-screen-xl mx-auto'>
+    <div className='px-10 max-w-screen-xl mx-auto mt-40'>
         <Title 
         title="Digital Services I offer"
         desc="Discover a diverse suite of digital services tailored to elevate your online presence and maximize performance. From sleek web design to powerful backend solutions, I offer everything you need to succeed in the digital realm."
