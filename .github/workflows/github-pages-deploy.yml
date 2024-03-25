@@ -2,6 +2,11 @@ name: Build and Deploy to GitHub Pages
 
 on:
   workflow_dispatch:
+    inputs:
+      branch:
+        description: 'Branch to build and deploy'
+        required: true
+        default: 'prod'
 
 jobs:
   build-and-deploy:
