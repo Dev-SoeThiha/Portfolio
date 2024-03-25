@@ -34,6 +34,8 @@ export default [
   },
 ];
 
+export const googleAnalyticsId = "G-18TWC4ZVG5";
+
 export const projects = [
   {
     title: "Flow",
