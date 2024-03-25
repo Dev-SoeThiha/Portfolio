@@ -4,35 +4,34 @@ on:
   workflow_dispatch:
     inputs:
       branch:
-        description: 'Branch to build from'
+        description: 'Branch to build and deploy'
         required: true
-        default: 'prod'
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.inputs.branch }}
 
-      - name: Clear deploy branch
-        run: |
-          git checkout deploy
-          git rm -r .
-
-      - name: Build project
+      - name: Install dependencies and build
         run: |
           npm install
           npm run build
 
-      - name: Move build output to deploy branch
+      - name: Clear deploy branch
         run: |
-          mkdir deploy
-          mv portfolio/* deploy/
+          git checkout ${{ github.event.inputs.branch }}
+          git pull origin ${{ github.event.inputs.branch }}
+          git rm -r .
+          git commit -am "Clear deploy branch"
+          git push
 
-      - name: Commit changes
+      - name: Copy build output to deploy branch
         run: |
-          git add -A
-          git commit -m "Update deploy branch"
-          git push origin deploy
+          cp -r build/* .
+          git add .
+          git commit -m "Add build output"
+          git push
