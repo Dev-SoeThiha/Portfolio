@@ -23,14 +23,13 @@ jobs:
 
       - name: Build project
         run: |
-          # Replace this with your build command
           npm install
           npm run build
 
       - name: Move build output to deploy branch
         run: |
           mkdir deploy
-          mv <build-output-folder>/* deploy/
+          mv portfolio/* deploy/
 
       - name: Commit changes
         run: |
