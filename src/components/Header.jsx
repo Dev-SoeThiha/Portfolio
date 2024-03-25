@@ -29,7 +29,7 @@ export const Header = () => {
           </li>
         </ul>
       </nav>
-      <div className="max-w-screen-xl flex flex-col h-[calc(100vh-80px)] md:flex-row items-center justify-center mx-auto text-left px-10">
+      <div className="max-w-screen-xl flex flex-col md:flex-row items-center justify-center mx-auto text-left px-10 mt-40">
         <div>
           <h2 className="text-5xl lg:text-7xl py-2 text-teal-600 font-medium">
             Soe Thiha
