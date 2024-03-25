@@ -35,6 +35,9 @@ jobs:
           git commit -am "Clear deploy branch"
           git push
 
+      - name: List build directory contents
+        run: ls -la build
+
       - name: Copy build output to deploy branch
         run: |
           cp -r build/* .
