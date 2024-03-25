@@ -22,6 +22,9 @@ jobs:
           git config --global user.email "actions@github.com"
           git config --global user.name "GitHub Actions"
 
+      - name: Change working directory
+        run: cd portfolio
+
       - name: Install dependencies and build
         run: |
           npm install
