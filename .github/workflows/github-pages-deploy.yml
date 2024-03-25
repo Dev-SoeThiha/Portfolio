@@ -2,10 +2,6 @@ name: Build and Deploy
 
 on:
   workflow_dispatch:
-    inputs:
-      branch:
-        description: 'Branch to build and deploy'
-        required: true
 
 jobs:
   build-and-deploy:
